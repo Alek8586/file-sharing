@@ -10,11 +10,10 @@ namespace FileSharing.DataAccess
     public interface IFilesRepository
     {
         File Add(File file);
-        byte[] GetContent(Guid id);
+        byte[] GetContent(Guid fileId);
         File GetInfo(Guid fileId);
         void UpdateContent(Guid fileId, byte[] content);
-        IEnumerable<File> GetUserFiles(Guid id);
-        void Delete(Guid id);
-        File Get(Guid id);
+        IEnumerable<File> GetUserFiles(Guid userId);
+        void Delete(Guid fileId);
     }
 }

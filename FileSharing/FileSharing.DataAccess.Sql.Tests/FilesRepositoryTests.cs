@@ -84,12 +84,12 @@ namespace FileSharing.DataAccess.Sql.Tests
             };
             //act
             var newFile = _filesRepository.Add(file);
-            var result = _filesRepository.Get(newFile.Id);
+            var result = _filesRepository.GetInfo(newFile.Id);
             //asserts
             Assert.AreEqual(file.Owner.Id, result.Owner.Id);
             Assert.AreEqual(file.Name, result.Name);
             _filesRepository.Delete(newFile.Id);
-            result = _filesRepository.Get(newFile.Id);
+            result = _filesRepository.GetInfo(newFile.Id);
         }
     }
 }

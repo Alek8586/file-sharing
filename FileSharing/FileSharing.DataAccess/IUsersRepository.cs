@@ -10,7 +10,7 @@ namespace FileSharing.DataAccess
     public interface IUsersRepository
     {
         User Add(string name, string email);
-        void Delete(Guid id);
-        User Get(Guid id);
+        void Delete(Guid userId);
+        User Get(Guid userId);
     }
 }

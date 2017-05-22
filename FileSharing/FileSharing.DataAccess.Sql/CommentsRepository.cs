@@ -71,7 +71,7 @@ namespace FileSharing.DataAccess.Sql
                             return new Comment
                             {
                                 Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                FileId = _filesRepository.Get(reader.GetGuid(reader.GetOrdinal("fileid"))),
+                                FileId = _filesRepository.GetInfo(reader.GetGuid(reader.GetOrdinal("fileid"))),
                                 UserId = _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("userid"))),
                                 Text = reader.GetString(reader.GetOrdinal("text"))
                             };

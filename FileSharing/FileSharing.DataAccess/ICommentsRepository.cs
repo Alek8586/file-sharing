@@ -10,7 +10,7 @@ namespace FileSharing.DataAccess
     public interface ICommentsRepository
     {
         Comment Add(Comment comment);
-        void Delete(Guid id);
+        void Delete(Guid commentId);
         IEnumerable<Comment> GetFileComments(Guid fileId);
         Comment GetInfo(Guid fileId);
     }

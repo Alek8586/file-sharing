@@ -64,8 +64,8 @@ namespace FileSharing.DataAccess.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select id, name, owner from files where id = @id";
-                    command.Parameters.AddWithValue("@id", fileId);
+                    command.CommandText = "select id, name, owner from files where id = @fileid";
+                    command.Parameters.AddWithValue("@fileid", fileId);
                     using (var reader = command.ExecuteReader())
                     {
 
@@ -99,7 +99,7 @@ namespace FileSharing.DataAccess.Sql
             }
         }
 
-        public IEnumerable<File> GetUserFiles(Guid id)
+        public IEnumerable<File> GetUserFiles(Guid userId)
         {
             var result = new List<File>();
             using (var connection = new SqlConnection(_connectionString))
@@ -108,7 +108,7 @@ namespace FileSharing.DataAccess.Sql
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = "select id from files where owner = @userid";
-                    command.Parameters.AddWithValue("@userid", id);
+                    command.Parameters.AddWithValue("@userid", userId);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -131,32 +131,6 @@ namespace FileSharing.DataAccess.Sql
                     command.CommandText = "delete from files where id = @id";
                     command.Parameters.AddWithValue("@id", id);
                     command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public File Get(Guid id)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = "select id, name, owner from files where id = @id";
-                    command.Parameters.AddWithValue("@id", id);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            return new File
-                            {
-                                Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                Name = reader.GetString(reader.GetOrdinal("name")),
-                                Owner = _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("owner")))
-                            };
-                        }
-                        throw new ArgumentException("file not found");
-                    }
                 }
             }
         }

@@ -37,48 +37,38 @@ namespace FileSharing.DataAccess.Sql
             }
         }
 
-        public Share GetInfo(Guid userid)
+        public IEnumerable<User> GetFileUsers(Guid fileId)
         {
+            var result = new List<User>();
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select fileid, userid from shares where userid = @userid";
-                    command.Parameters.AddWithValue("@usserid", userid);
+                    command.CommandText = "select userid from shares where fileid = @fileid";
+                    command.Parameters.AddWithValue("@fileid", fileId);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            return new Share
-                            {
-                                UserId = _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("userid")))
-                            };
+                            result.Add(_usersRepository.Get(reader.GetGuid(reader.GetOrdinal("userid"))));
                         }
-                        throw new ArgumentException("file not found");
                     }
+                    return result;
                 }
             }
         }
 
-        public IEnumerable<Share> GetUserFiles(Guid id)
+        public void Delete(Guid fileId)
         {
-            var result = new List<Share>();
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select filesid from share where userid = @userid";
-                    command.Parameters.AddWithValue("@userid", id);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            result.Add(GetInfo(reader.GetGuid(reader.GetOrdinal("id"))));
-                        }
-                    }
-                    return result;
+                    command.CommandText = "delete from shares where fileid = @fileid";
+                    command.Parameters.AddWithValue("@fileid", fileId);
+                    command.ExecuteNonQuery();
                 }
             }
         }

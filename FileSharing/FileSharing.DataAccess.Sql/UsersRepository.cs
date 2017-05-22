@@ -33,36 +33,36 @@ namespace FileSharing.DataAccess.Sql
                     return new User
                     {
                         Id = userId,
-                        Name = name,
-                        Email = email
+                        Email = email,
+                        Name = name
                     };
                 }
             }
         }
 
-        public void Delete(Guid id)
+        public void Delete(Guid userId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "delete from users where id = @id";
-                    command.Parameters.AddWithValue("@id", id);
+                    command.CommandText = "delete from users where id = @userid";
+                    command.Parameters.AddWithValue("@userid", userId);
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public User Get(Guid id)
+        public User Get(Guid userId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select id, name, email from users where id = @id";
-                    command.Parameters.AddWithValue("@id", id);
+                    command.CommandText = "select id, name, email from users where id = @userid";
+                    command.Parameters.AddWithValue("@userid", userId);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
