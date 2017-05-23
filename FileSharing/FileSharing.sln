@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.Model", "FileSharing.Model\FileSharing.Model.csproj", "{B2AF375F-AD44-4BF6-8B81-77132AC94363}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B5A7B3F6-7FB5-494D-866B-0FD4C234C321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.DataAccess.Sql.Tests", "FileSharing.DataAccess.Sql.Tests\FileSharing.DataAccess.Sql.Tests.csproj", "{3E8FEA05-E7B0-49A2-BAE3-352070420070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.WebApi", "FileSharing.WebApi\FileSharing.WebApi.csproj", "{ECB17C59-3F63-44A0-BA97-C9D047750814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{3E8FEA05-E7B0-49A2-BAE3-352070420070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E8FEA05-E7B0-49A2-BAE3-352070420070}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E8FEA05-E7B0-49A2-BAE3-352070420070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECB17C59-3F63-44A0-BA97-C9D047750814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECB17C59-3F63-44A0-BA97-C9D047750814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECB17C59-3F63-44A0-BA97-C9D047750814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECB17C59-3F63-44A0-BA97-C9D047750814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
