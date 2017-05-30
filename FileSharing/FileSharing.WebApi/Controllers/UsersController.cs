@@ -44,6 +44,7 @@ namespace FileSharing.WebApi.Controllers
         public void DeleteUser(Guid id)
         {
             _usersRepository.Delete(id);
+            Log.Logger.ServiceLog.Info("Delete user with id: {0}", id);
         }
 
         [Route("api/users/{id}/files")]
