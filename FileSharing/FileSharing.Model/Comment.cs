@@ -9,8 +9,8 @@ namespace FileSharing.Model
     public class Comment
     {
         public Guid Id { get; set; }
-        public File FileId { get; set; }
-        public User UserId { get; set; }
+        public Guid FileId { get; set; }
+        public Guid UserId { get; set; }
         public string Text { get; set; }
     }
 }

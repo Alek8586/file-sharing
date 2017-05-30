@@ -11,14 +11,10 @@ namespace FileSharing.DataAccess.Sql
     public class CommentsRepository : ICommentsRepository
     {
         private readonly string _connectionString;
-        private readonly IUsersRepository _usersRepository;
-        private readonly IFilesRepository _filesRepository;
 
         public CommentsRepository(string connectionString, IUsersRepository userRepository, IFilesRepository filesRepository)
         {
             _connectionString = connectionString;
-            _usersRepository = userRepository;
-            _filesRepository = filesRepository;
         }
 
         public Comment Add(Comment comment)
@@ -31,8 +27,8 @@ namespace FileSharing.DataAccess.Sql
                     command.CommandText = "insert into comments (id, userid, fileid, text) values (@id, @userid, @fileid, @text)";
                     var commentId = Guid.NewGuid();
                     command.Parameters.AddWithValue("@id", commentId);
-                    command.Parameters.AddWithValue("@userid", comment.UserId.Id);
-                    command.Parameters.AddWithValue("@fileid", comment.FileId.Id);
+                    command.Parameters.AddWithValue("@userid", comment.UserId);
+                    command.Parameters.AddWithValue("@fileid", comment.FileId);
                     command.Parameters.AddWithValue("@text", comment.Text);
                     command.ExecuteNonQuery();
                     comment.Id = commentId;
@@ -71,8 +67,8 @@ namespace FileSharing.DataAccess.Sql
                             return new Comment
                             {
                                 Id = reader.GetGuid(reader.GetOrdinal("id")),
-                                FileId = _filesRepository.GetInfo(reader.GetGuid(reader.GetOrdinal("fileid"))),
-                                UserId = _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("userid"))),
+                                FileId = reader.GetGuid(reader.GetOrdinal("fileid")),
+                                UserId = reader.GetGuid(reader.GetOrdinal("userid")),
                                 Text = reader.GetString(reader.GetOrdinal("text"))
                             };
                         }

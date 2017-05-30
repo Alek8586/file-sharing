@@ -11,6 +11,6 @@ namespace FileSharing.DataAccess
     {
         Share Add(Share share);
         IEnumerable<User> GetFileUsers(Guid fileId);
-        void Delete(Guid fileId);
+        void Delete(Share share);
     }
 }

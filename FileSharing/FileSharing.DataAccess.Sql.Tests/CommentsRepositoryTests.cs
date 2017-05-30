@@ -53,16 +53,16 @@ namespace FileSharing.DataAccess.Sql.Tests
             //arrange
             var comment = new Comment
             {
-                FileId = TestFile,
-                UserId = TestUser,
+                FileId = TestFile.Id,
+                UserId = TestUser.Id,
                 Text = "test"
             };
             //act
             var newComment = _commentsRepository.Add(comment);
             var result = _commentsRepository.GetInfo(newComment.Id);
             //asserts
-            Assert.AreEqual(comment.FileId.Id, result.FileId.Id);
-            Assert.AreEqual(comment.UserId.Id, result.UserId.Id);
+            Assert.AreEqual(comment.FileId, result.FileId);
+            Assert.AreEqual(comment.UserId, result.UserId);
             Assert.AreEqual(comment.Text, result.Text);
         }
     }

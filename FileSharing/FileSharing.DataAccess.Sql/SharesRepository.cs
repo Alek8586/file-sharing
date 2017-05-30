@@ -29,8 +29,8 @@ namespace FileSharing.DataAccess.Sql
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = "insert into shares (fileid, userid) values (@fileid, @userid)";
-                    command.Parameters.AddWithValue("@fileid", share.FileId.Id);
-                    command.Parameters.AddWithValue("@userid", share.UserId.Id);
+                    command.Parameters.AddWithValue("@fileid", share.FileId);
+                    command.Parameters.AddWithValue("@userid", share.UserId);
                     command.ExecuteNonQuery();
                     return share;
                 }
@@ -59,15 +59,16 @@ namespace FileSharing.DataAccess.Sql
             }
         }
 
-        public void Delete(Guid fileId)
+        public void Delete(Share share)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "delete from shares where fileid = @fileid";
-                    command.Parameters.AddWithValue("@fileid", fileId);
+                    command.CommandText = "delete from shares where fileid = @fileid and userid = @userid";
+                    command.Parameters.AddWithValue("@fileid", share.FileId);
+                    command.Parameters.AddWithValue("@userid", share.UserId);
                     command.ExecuteNonQuery();
                 }
             }

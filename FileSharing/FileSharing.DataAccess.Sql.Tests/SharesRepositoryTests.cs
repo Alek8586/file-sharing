@@ -41,8 +41,6 @@ namespace FileSharing.DataAccess.Sql.Tests
         {
             if (TestUser != null)
             {
-                foreach (var share in _sharesRepository.GetFileUsers(TestFile.Id))
-                    _sharesRepository.Delete(TestFile.Id);
                 _usersRepository.Delete(TestUser.Id);
                 _filesRepository.Delete(TestFile.Id);
             }
@@ -55,8 +53,8 @@ namespace FileSharing.DataAccess.Sql.Tests
             List<Share> shares = new List<Share>();
             var share = new Share
             {
-                FileId = TestFile,
-                UserId = TestUser
+                FileId = TestFile.Id,
+                UserId = TestUser.Id
             };
             shares.Add(share);
             //act
@@ -65,9 +63,9 @@ namespace FileSharing.DataAccess.Sql.Tests
             //asserts
             foreach (var res in result)
             {
-                Assert.AreEqual(res.Name, share.UserId.Name);
-                Assert.AreEqual(res.Email, share.UserId.Email);
+                Assert.AreEqual(res.Id, share.UserId);
             }
+            _sharesRepository.Delete(newShare);
         }
     }
 }

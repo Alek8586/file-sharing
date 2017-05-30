@@ -50,7 +50,9 @@ namespace FileSharing.DataAccess.Sql
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
-                            return reader.GetSqlBinary(reader.GetOrdinal("content")).Value;
+                            if (!reader.IsDBNull(reader.GetOrdinal("content")))
+                                return reader.GetSqlBinary(reader.GetOrdinal("content")).Value;
+                            else throw new ArgumentException("empty content");
                         throw new ArgumentException($"file {fileId} not found");
                     }
                 }

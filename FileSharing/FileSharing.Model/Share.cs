@@ -8,7 +8,7 @@ namespace FileSharing.Model
 {
     public class Share
     {
-        public File FileId { get; set; }
-        public User UserId { get; set; }
+        public Guid FileId { get; set; }
+        public Guid UserId { get; set; }
     }
 }
