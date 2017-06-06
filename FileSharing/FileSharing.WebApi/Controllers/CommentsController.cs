@@ -26,19 +26,44 @@ namespace FileSharing.WebApi.Controllers
         [HttpPost]
         public Comment CreateComment(Comment comment)
         {
-            return _commentsRepository.Add(comment);
+            try
+            {
+                return _commentsRepository.Add(comment);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpGet]
         public Comment GetComment(Guid id)
         {
-            return _commentsRepository.GetInfo(id);
+            try
+            {
+                return _commentsRepository.GetInfo(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpDelete]
         public void DeleteComment(Guid id)
         {
-            _commentsRepository.Delete(id);
+            try
+            {
+                _commentsRepository.Delete(id);
+                Log.Logger.ServiceLog.Info("Delete comment with id: {0}", id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
     }

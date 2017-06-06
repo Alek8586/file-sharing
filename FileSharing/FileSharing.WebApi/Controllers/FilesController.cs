@@ -29,64 +29,166 @@ namespace FileSharing.WebApi.Controllers
         [HttpPost]
         public File CreateFile([FromBody]File file)
         {
-            return _filesRepository.Add(file);
+            try
+            {
+                return _filesRepository.Add(file);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpGet]
         public File GetFile(Guid id)
         {
-
-            return _filesRepository.GetInfo(id);
+            try
+            {
+                return _filesRepository.GetInfo(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpDelete]
         public void DeleteFile(Guid id)
         {
-            _filesRepository.Delete(id);
+            try
+            {
+                _filesRepository.Delete(id);
+                Log.Logger.ServiceLog.Info("Delete file with id: {0}", id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpPut]
         [Route("api/files/{id}/content")]
         public async Task UpdateFileContent(Guid id)
         {
-            var bytes = await Request.Content.ReadAsByteArrayAsync();
-            _filesRepository.UpdateContent(id, bytes);
+            try
+            {
+                var bytes = await Request.Content.ReadAsByteArrayAsync();
+                _filesRepository.UpdateContent(id, bytes);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpGet]
         [Route("api/files/{id}/content")]
         public byte[] GetFileContent(Guid id)
         {
-            return _filesRepository.GetContent(id);
+            try
+            {
+                return _filesRepository.GetContent(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
-        [Route("api/files/{id}/comments")]
+        [Route("api/files/comments")]
         [HttpGet]
-        public IEnumerable<Comment> GetFileComments([FromBody]Guid id)
+        public IEnumerable<Comment> GetFileComments(Guid id)
         {
-            return _commentsRepository.GetFileComments(id);
+            try
+            {
+                return _commentsRepository.GetFileComments(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
-        [Route("api/files/SharingFiles")]
-
+        [Route("api/files/SharingFiles/")]
         [HttpPost]
         public Share CreateShare([FromBody]Share share)
         {
-            return _sharesRepository.Add(share);
+            try
+            {
+                return _sharesRepository.Add(share);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
-        [Route("api/files/SharingFiles")]
+        [Route("api/files/Sharing/{id}")]
         [HttpDelete]
-        public void DeleteShare(Share share)
+        public void DeleteShare(Guid id)
         {
-            _sharesRepository.Delete(share);
+            try
+            {
+                _sharesRepository.Delete(id);
+                Log.Logger.ServiceLog.Info("Delete share with id: {0}", id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
-        [Route("api/files/SharingFiles")]
+        [Route("api/files/SharingFiles/")]
         [HttpGet]
         public IEnumerable<User> GetFileUsers(Guid id)
         {
-            return _sharesRepository.GetFileUsers(id);
+            try
+            {
+                return _sharesRepository.GetFileUsers(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
+        }
+
+        [Route("api/files/SharingFiles/")]
+        [HttpGet]
+        public Guid GetShareId(Guid fileId, Guid userId)
+        {
+            try
+            {
+                return _sharesRepository.GetShareId(fileId, userId);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
+        }
+
+        [Route("api/files/filesh/")]
+        [HttpGet]
+        public IEnumerable<File> GetFilesSh(Guid id)
+        {
+            try
+            {
+                return _sharesRepository.GetFilesSh(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
     }
 }

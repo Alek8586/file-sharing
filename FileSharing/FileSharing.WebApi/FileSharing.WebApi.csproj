@@ -124,6 +124,10 @@
       <Project>{38595bc5-a1c9-4d6a-bc2f-f35a61148297}</Project>
       <Name>FileSharing.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FileSharing.Log\FileSharing.Log.csproj">
+      <Project>{5db724dd-fd0d-4179-b18d-5b5a2e84a9c8}</Project>
+      <Name>FileSharing.Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileSharing.Model\FileSharing.Model.csproj">
       <Project>{b2af375f-ad44-4bf6-8b81-77132ac94363}</Project>
       <Name>FileSharing.Model</Name>

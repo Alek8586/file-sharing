@@ -65,7 +65,7 @@ namespace FileSharing.DataAccess.Sql.Tests
             {
                 Assert.AreEqual(res.Id, share.UserId);
             }
-            _sharesRepository.Delete(newShare);
+            _sharesRepository.Delete(newShare.id);
         }
     }
 }

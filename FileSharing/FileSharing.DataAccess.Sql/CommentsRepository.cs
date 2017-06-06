@@ -11,10 +11,14 @@ namespace FileSharing.DataAccess.Sql
     public class CommentsRepository : ICommentsRepository
     {
         private readonly string _connectionString;
+        private readonly IUsersRepository _usersRepository;
+        private readonly IFilesRepository _filesRepository;
 
-        public CommentsRepository(string connectionString, IUsersRepository userRepository, IFilesRepository filesRepository)
+        public CommentsRepository(string connectionString, IUsersRepository usersRepository, IFilesRepository filesRepository)
         {
             _connectionString = connectionString;
+            _usersRepository = usersRepository;
+            _filesRepository = filesRepository;
         }
 
         public Comment Add(Comment comment)

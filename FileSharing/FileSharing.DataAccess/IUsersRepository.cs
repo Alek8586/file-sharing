@@ -12,5 +12,6 @@ namespace FileSharing.DataAccess
         User Add(string name, string email);
         void Delete(Guid userId);
         User Get(Guid userId);
+        IEnumerable<User> GetUsers();
     }
 }

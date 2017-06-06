@@ -79,5 +79,26 @@ namespace FileSharing.DataAccess.Sql
                 }
             }
         }
+
+        public IEnumerable<User> GetUsers()
+        {
+            var result = new List<User>();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "select * from users";
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(Get(reader.GetGuid(reader.GetOrdinal("id"))));
+                        }
+                        return result;
+                    }
+                }
+            }
+        }
     }
 }

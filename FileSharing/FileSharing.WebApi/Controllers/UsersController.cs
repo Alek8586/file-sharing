@@ -21,37 +21,77 @@ namespace FileSharing.WebApi.Controllers
             _filesRepository = new FilesRepository(ConnectionString, _usersRepository);
         }
 
-        ///<summary>
-        ///Create user
-        ///</summary>
-        ///<param name="user"></param>
-        ///<returns></returns>
-
         [HttpPost]
         public User CreateUser([FromBody]User user)
         {
-            return _usersRepository.Add(user.Name, user.Email);
+            try
+            {
+                return _usersRepository.Add(user.Name, user.Email);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpGet]
         public User GetUser(Guid id)
         {
-
-            return _usersRepository.Get(id);
+            try
+            {
+                return _usersRepository.Get(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [HttpDelete]
         public void DeleteUser(Guid id)
         {
-            _usersRepository.Delete(id);
-            Log.Logger.ServiceLog.Info("Delete user with id: {0}", id);
+            try
+            {
+                _usersRepository.Delete(id);
+                Log.Logger.ServiceLog.Info("Delete user with id: {0}", id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
 
         [Route("api/users/{id}/files")]
         [HttpGet]
         public IEnumerable<File> GetUserFiles(Guid id)
         {
-            return _filesRepository.GetUserFiles(id);
+            try
+            {
+                return _filesRepository.GetUserFiles(id);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
+        }
+
+        [Route("api/users/all")]
+        [HttpGet]
+        public IEnumerable<User> GetUsers()
+        {
+            try
+            {
+                return _usersRepository.GetUsers();
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.ServiceLog.Error(ex.Message);
+                throw;
+            }
         }
     }
 }
