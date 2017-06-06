@@ -18,7 +18,6 @@ namespace FileSharing.WinForms
         private Guid _userId;
         private ServiceClient _client;
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -140,9 +139,9 @@ namespace FileSharing.WinForms
                 RefreshFileList();
                 lblUserName.Text = _client.GetUser(_userId).Name;
             }
-            catch
+            catch (Exception exception)
             {
-
+                MessageBox.Show($"Произошла ошибка. {Environment.NewLine}{exception.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -238,9 +237,9 @@ namespace FileSharing.WinForms
                     RefreshCommentListSh();
                 }
             }
-            catch
+            catch (Exception exception)
             {
-
+                MessageBox.Show($"Произошла ошибка: {Environment.NewLine}{exception.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
