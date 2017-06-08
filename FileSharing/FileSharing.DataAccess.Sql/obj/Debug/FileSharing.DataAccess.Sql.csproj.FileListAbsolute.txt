@@ -1,0 +1,9 @@
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\bin\Debug\FileSharing.DataAccess.Sql.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\bin\Debug\FileSharing.DataAccess.Sql.pdb
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\bin\Debug\FileSharing.DataAccess.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\bin\Debug\FileSharing.Model.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\bin\Debug\FileSharing.DataAccess.pdb
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\bin\Debug\FileSharing.Model.pdb
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\obj\Debug\FileSharing.DataAccess.Sql.csprojResolveAssemblyReference.cache
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\obj\Debug\FileSharing.DataAccess.Sql.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.DataAccess.Sql\obj\Debug\FileSharing.DataAccess.Sql.pdb

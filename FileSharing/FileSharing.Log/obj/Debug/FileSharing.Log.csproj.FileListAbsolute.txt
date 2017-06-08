@@ -1,0 +1,7 @@
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\bin\Debug\FileSharing.Log.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\bin\Debug\FileSharing.Log.pdb
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\bin\Debug\NLog.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\bin\Debug\NLog.xml
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\obj\Debug\FileSharing.Log.csprojResolveAssemblyReference.cache
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\obj\Debug\FileSharing.Log.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Log\obj\Debug\FileSharing.Log.pdb

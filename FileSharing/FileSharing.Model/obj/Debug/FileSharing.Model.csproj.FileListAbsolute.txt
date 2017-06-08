@@ -1,0 +1,5 @@
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Model\bin\Debug\FileSharing.Model.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Model\bin\Debug\FileSharing.Model.pdb
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Model\obj\Debug\FileSharing.Model.csprojResolveAssemblyReference.cache
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Model\obj\Debug\FileSharing.Model.dll
+C:\Users\leksk\Source\Repos\file-sharing\FileSharing\FileSharing.Model\obj\Debug\FileSharing.Model.pdb
